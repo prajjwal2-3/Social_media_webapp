@@ -1,22 +1,27 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import {useSelector } from 'react-redux'
 const Header = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
     interface Rootstate{
         user:{
           user:any[]
         };
       }
     const isuser = useSelector((state:Rootstate)=>state.user.user)
-    if(isuser){
-        navigate('/browse')
-        }
-  return (
-    <div>
-      
-    </div>
-  )
+    
+        useEffect(()=>{
+            if (!isuser) {
+             
+                navigate("/login");
+                   } else if( isuser) {
+                   
+                     navigate("/browse")
+                   }
+        },[location.pathname, isuser, navigate])
+  return null
 }
 
 export default Header

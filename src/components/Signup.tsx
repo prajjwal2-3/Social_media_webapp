@@ -23,7 +23,7 @@ const Signup = () => {
         .then((Response)=>{
           
          
-          dispatch(addUser({Response}))
+          dispatch(addUser(Response.statusText))
         })
         .catch((error) => {
           console.error('Error:', error);
