@@ -1,11 +1,22 @@
 import React from 'react'
-import { useRef } from 'react'
+import { useRef ,useState} from 'react'
 import axios from 'axios'
+import { addUser } from '../utils/userslice.ts'
+import {useDispatch, useSelector} from 'react-redux'
 const Signup = () => {
   const name = useRef<HTMLInputElement>(null);
   const information = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
+ 
+  const dispatch = useDispatch();
+  interface Rootstate{
+    user:{
+      user:any[]
+    };
+  }
+  const isuser = useSelector((state:Rootstate) => state.user?.user);
 
+  
   const signup = () => {
     if (name.current && password.current && information.current) {
       axios
@@ -14,8 +25,10 @@ const Signup = () => {
           password: password.current.value,
           information: information.current.value
         })
-        .then((Response) => {
-          console.log(Response);
+        .then((Response)=>{
+          
+         
+          dispatch(addUser({Response}))
         })
         .catch((error) => {
           console.error('Error:', error);
