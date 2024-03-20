@@ -3,20 +3,15 @@ import { useRef ,useState} from 'react'
 import axios from 'axios'
 import { addUser } from '../utils/userslice.ts'
 import {useDispatch, useSelector} from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 const Signup = () => {
   const name = useRef<HTMLInputElement>(null);
   const information = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
  
   const dispatch = useDispatch();
-  interface Rootstate{
-    user:{
-      user:any[]
-    };
-  }
-  const isuser = useSelector((state:Rootstate) => state.user?.user);
+ 
 
-  
   const signup = () => {
     if (name.current && password.current && information.current) {
       axios
