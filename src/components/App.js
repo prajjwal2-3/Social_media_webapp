@@ -7,8 +7,8 @@ import Header from "./Header.tsx";
 import Home from "./Home.js";
 import { useState } from "react";
 function App() {
-  // const isuser = useSelector((state)=>state.user.user)
- const isuser=true
+  const isuser = useSelector((state)=>state.user.user)
+//  const isuser=true
   return (
     <div className="App">
       <BrowserRouter>

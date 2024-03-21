@@ -22,8 +22,8 @@ const Signup = () => {
         })
         .then((Response)=>{
           
-         
-          dispatch(addUser(Response.statusText))
+         console.log(Response)
+          dispatch(addUser(Response.data))
         })
         .catch((error) => {
           console.error('Error:', error);
