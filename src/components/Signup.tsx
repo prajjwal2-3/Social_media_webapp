@@ -15,7 +15,7 @@ const Signup = () => {
   const signup = () => {
     if (name.current && password.current && information.current) {
       axios
-        .post("http://localhost:3001/user/signup", {
+        .post("https://social-backend-navy.vercel.app/user/signup", {
           username: name.current.value,
           password: password.current.value,
           information: information.current.value
