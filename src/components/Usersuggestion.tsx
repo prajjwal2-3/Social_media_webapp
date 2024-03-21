@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 interface UserSuggestionInfo {
   username: string,
 _id: String,
@@ -8,7 +8,10 @@ post:any[]
 __v:number
 }
 const Usersuggestion = ({info}) => {
-  
+  const [connect,setconnect]=useState("Connect");
+  function handleclick(){
+      connect==="Connect"?setconnect("Sent"):setconnect("Connect")
+  }
   return (
     
     <div className='rounded-lg bg-white mx-2 my-3 p-2 flex justify-between items-center'>
@@ -19,8 +22,8 @@ const Usersuggestion = ({info}) => {
     <div className="">{info?.information}</div>
     </div>
     </div>
-    <div className="h-8 w-16 bg-green-500 rounded-lg p-0.5 cursor-pointer hover:bg-green-600 ">
-      <p className=''>Connect</p>
+    <div className="h-8 w-16 bg-green-500 rounded-lg text-center p-0.5 cursor-pointer hover:bg-green-600 ">
+      <button onClick={handleclick} className='' >{connect}</button>
     </div>
    
     </div>
