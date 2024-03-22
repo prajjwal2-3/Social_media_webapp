@@ -6,6 +6,7 @@ import { UseDispatch } from 'react-redux'
 import { addsuggestedUser } from '../utils/suggestionslice.ts'
 
 import axios from 'axios'
+import Postsection from './Postsection.tsx'
 const Browse = () => {
   const dispatch = useDispatch()
   
@@ -51,7 +52,7 @@ __v:number
   const arr= [1,2,3,4,5,6,7,7,8,6,6,7,8,6,4,5,3]
   if(suggestion===null) return <div className="">loading....</div>
   return (
-    <div>
+    <div className='bg-zinc-900 h-screen'>
        <PrimarySearchAppBar/>
       <div className=" flex flex-row justify-evenly sm:mt-12 mt-8">
         <div className=" bg-gray-200 w-3/12 h-96 overflow-y-scroll overflow-x-hidden hidden sm:block p-4 rounded-2xl">
@@ -62,7 +63,9 @@ __v:number
            
           </div>
         </div>
-        <div className=" bg-blue-500 sm:w-4/12  w-10/12">add post</div>
+        <div className="  sm:w-4/12  w-10/12">
+<Postsection/>
+        </div>
         <div className=" bg-green-500 w-3/12 hidden  sm:block">latest news</div>
       </div>
     </div>

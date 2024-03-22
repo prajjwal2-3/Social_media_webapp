@@ -1,0 +1,16 @@
+import React from 'react'
+
+const Addpost = () => {
+  return (
+    <div className='bg-gray-200 h-20 rounded-xl flex items-center justify-evenly p-4'>
+      <div className=''>
+        <input type="text" className='h-12 w-96 rounded-lg p-2' />
+      </div>
+      <div className="" >
+        <button className='bg-blue-500 p-2 m-1 rounded-md'>Post</button>
+      </div>
+    </div>
+  ) 
+}
+
+export default Addpost
