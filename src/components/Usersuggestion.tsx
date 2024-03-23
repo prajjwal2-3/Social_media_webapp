@@ -14,7 +14,7 @@ const Usersuggestion = ({info}) => {
   }
   return (
     
-    <div className='rounded-lg bg-white mx-2 my-3 p-2 flex justify-between items-center'>
+    <div className='rounded-lg bg-gray-600 mx-2 my-3 p-2 flex justify-between items-center'>
     <div className="flex items-center">
     <div className="w-8 h-8 rounded-full bg-gray-500 mr-2"></div>
     <div className="flex flex-col">

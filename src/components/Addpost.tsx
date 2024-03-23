@@ -1,6 +1,11 @@
 import React from 'react'
-
+import axios from 'axios'
 const Addpost = () => {
+  function addpost(){
+    axios.post('https://social-backend-navy.vercel.app/user/post')
+  }
+  
+  
   return (
     <div className='bg-gray-200 h-20 rounded-xl flex items-center justify-evenly p-4'>
       <div className=''>
