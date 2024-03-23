@@ -32,7 +32,7 @@ const Postsection = () => {
   // if(!postdata) return <div>Loading.....</div>
   console.log(postdata)
   return (
-    <div >
+    <div className='h-screen overflow-y-scroll' >
      <Addpost/>
     
      <div className="my-4 font-bold text-xl text-white">Recent Posts</div>
