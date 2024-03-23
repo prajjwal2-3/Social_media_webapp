@@ -1,10 +1,35 @@
 import React from 'react'
 import axios from 'axios'
 import { useRef } from 'react'
+import { useSelector } from 'react-redux';
 const Addpost = () => {
+  interface RootState {
+    user: {
+        user: {
+          username:string,
+          password:string
+        }
+    }
+
+}
+interface user {
+  userdata:{
+    username:string,
+    password:string,
+    msg:string
+  }
+}
   const post = useRef<HTMLInputElement>(null);
+  let userdata = useSelector((state:RootState)=>state.user.user)
+  const headers={
+    'username':userdata.username,
+    'password':userdata.password
+  }
   function addpost(){
-    axios.post('https://social-backend-navy.vercel.app/user/post')
+   if(post.current){
+    const data = post.current.value
+    axios.post('https://social-backend-navy.vercel.app/user/post',{description:data},{headers:headers})
+   }
   }
   
   
@@ -14,7 +39,7 @@ const Addpost = () => {
         <input type="text" ref={post} className='h-12 sm:w-96  rounded-lg p-2' />
       </div>
       <div className="" >
-        <button className='bg-blue-500 p-2 m-1 rounded-md'>Post</button>
+        <button onClick={addpost} className='bg-blue-500 p-2 m-1 rounded-md'>Post</button>
       </div>
     </div>
   ) 
