@@ -56,7 +56,7 @@ __v:number
        <PrimarySearchAppBar/>
       <div className=" flex flex-row justify-evenly sm:mt-12 mt-8">
         <div className=" bg-gray-800 w-3/12 h-96 overflow-y-scroll overflow-x-hidden hidden sm:block p-4 rounded-2xl">
-          <div className="w-full  text-center font-bold text-xl m-2">You may Know them</div>
+          <div className="w-full  text-center font-bold text-xl m-2 text-white">You may Know them</div>
           <div className="w-full h-0.5 bg-gray-100"></div>
           <div className="">
             {suggestion.map((e,index)=>( <Usersuggestion info={e}  key={index}/>))}
