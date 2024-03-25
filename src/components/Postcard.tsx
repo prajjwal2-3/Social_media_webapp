@@ -10,7 +10,7 @@ const Postcard = ({info}) => {
   axios.get('https://social-backend-navy.vercel.app/user/userinfo',{
     headers:headers
   }).then((response)=>{
-    console.log(response.data)
+    
     setname(response.data.username)
     setinfor(response.data.information)
   })

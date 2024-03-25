@@ -12,7 +12,7 @@ const Postsection = () => {
        
         postlist: {
           reverse(): unknown
-       
+          slice():any
           map: any
           discription:string,
           user_id:string,
@@ -25,7 +25,7 @@ const Postsection = () => {
 }
   const dispatch = useDispatch();
   
-  const postdata = useSelector((state:RootState)=>state?.post?.postlist)
+  var postdata = useSelector((state:RootState)=>state?.post?.postlist)
 
   useEffect(()=>{
     axios.get('https://social-backend-navy.vercel.app/user/post').then((response)=>{
@@ -34,19 +34,18 @@ const Postsection = () => {
     })
   },[])
   if(!postdata) return <div>Loading.....</div>
- 
+ var post = postdata.slice().reverse()
   
-  console.log(postdata)
- 
+
   return (
     <div className='h-screen overflow-y-scroll' >
      <Addpost/>
     
      <div className="my-4 font-bold text-xl text-white">Recent Posts</div>
   
-  {/* {
-    postdata? postdata.map((e,index)=>(<Postcard info={e} key={index}/>)):""
-  } */}
+  {
+    postdata? post.map((e,index)=>(<Postcard info={e} key={index}/>)):""
+  }
     </div>
   )
 }

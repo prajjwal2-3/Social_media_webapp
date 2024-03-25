@@ -31,7 +31,7 @@ __v:number
 }
 
   const userdata=useSelector((state:RootState)=>state?.user?.user)
-   console.log(userdata)
+ 
    const headers={
     'username':userdata?.username,
     'password':userdata?.password
