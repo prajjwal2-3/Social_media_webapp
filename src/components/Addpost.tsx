@@ -21,9 +21,11 @@ interface user {
 }
   const post = useRef<HTMLInputElement>(null);
   let userdata = useSelector((state:RootState)=>state.user.user)
+  let username = localStorage.getItem("username")
+  let password = localStorage.getItem("password")
   const headers={
-    'username':userdata.username,
-    'password':userdata.password
+    'username':username,
+    'password':password
   }
   function addpost(){
    if(post.current){
