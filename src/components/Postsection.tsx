@@ -9,37 +9,44 @@ const Postsection = () => {
   interface RootState {
     post: {
         map(arg0: (e: any, index: any) => React.JSX.Element): React.ReactNode
+       
         postlist: {
+          reverse(): unknown
+       
           map: any
           discription:string,
           user_id:string,
           _id:string,
-          __v:number
+          __v:number,
+         
         }
     }
 
 }
   const dispatch = useDispatch();
+  
   const postdata = useSelector((state:RootState)=>state?.post?.postlist)
- 
+
   useEffect(()=>{
     axios.get('https://social-backend-navy.vercel.app/user/post').then((response)=>{
       // console.log(response.data.Post)
       dispatch(addpostlist(response.data.Post))
     })
   },[])
-
-  // if(!postdata) return <div>Loading.....</div>
+  if(!postdata) return <div>Loading.....</div>
+ 
+  
   console.log(postdata)
+ 
   return (
     <div className='h-screen overflow-y-scroll' >
      <Addpost/>
     
      <div className="my-4 font-bold text-xl text-white">Recent Posts</div>
   
-  {
+  {/* {
     postdata? postdata.map((e,index)=>(<Postcard info={e} key={index}/>)):""
-  }
+  } */}
     </div>
   )
 }
