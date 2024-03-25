@@ -18,8 +18,8 @@ const Usersuggestion = ({info}) => {
     <div className="flex items-center">
     <div className="w-8 h-8 rounded-full bg-gray-500 shadow-lg mr-2"></div>
     <div className="flex flex-col">
-    <div className="">{info?.username}</div>
-    <div className="">{info?.information}</div>
+    <div className="text-white">{info?.username}</div>
+    <div className="text-white">{info?.information}</div>
     </div>
     </div>
     <div className="h-8 w-16 bg-green-500 rounded-lg text-center p-0.5 cursor-pointer hover:bg-green-600 ">
