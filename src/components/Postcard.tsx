@@ -20,11 +20,11 @@ const Postcard = ({info}) => {
      <div className="flex items-center bg-gray-600 rounded-lg p-2 shadow-md">
     <div className="w-8 h-8 rounded-full shadow-lg bg-gray-500 mr-2"></div>
     <div className="flex flex-col">
-    <div className="">{name}</div>
-    <div className="">{infor}</div>
+    <div className="text-white">{name}</div>
+    <div className="text-white">{infor}</div>
     </div>
     </div>
-    <div className="flex items-center mt-2 bg-gray-600 rounded-lg p-2 shadow-md">
+    <div className="flex items-center mt-2 bg-gray-600 rounded-lg p-2 text-white shadow-md">
     {info?.description}
     </div>
      
