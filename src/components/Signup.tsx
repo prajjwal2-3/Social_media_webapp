@@ -26,8 +26,8 @@ const Signup = () => {
           
          console.log(Response)
           dispatch(addUser(Response.data))
-          localStorage.setItem("username",Response.data.username)
-          localStorage.setItem("password",Response.data.password)
+          sessionStorage.setItem("username",Response.data.username)
+          sessionStorage.setItem("password",Response.data.password)
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -50,8 +50,8 @@ const Signup = () => {
           
          console.log(Response)
           dispatch(addUser(Response.data))
-          localStorage.setItem("username",Response.data.username)
-          localStorage.setItem("password",Response.data.password)
+          sessionStorage.setItem("username",Response.data.username)
+        sessionStorage.setItem("password",Response.data.password)
         })
         .catch((error) => {
           console.error('Error:', error);

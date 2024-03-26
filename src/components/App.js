@@ -1,20 +1,23 @@
 import Browse from "./Browse.tsx";
 import Signup from "./Signup.tsx";
-import { createBrowserRouter,Outlet,useNavigate } from 'react-router-dom';
-import { useSelector, UseSelector } from "react-redux";
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import Header from "./Header.tsx";
-import Home from "./Home.js";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { useSelector } from "react-redux";
 function App() {
-  const isuser = localStorage.getItem("username")
-  // const isuser = useSelector((state)=>state.user.user)
-//  const isuser=true
+
+const data = useSelector((state)=>state.user.user)
+var [isUser, setIsUser] = useState(sessionStorage.getItem("username"));
+useEffect(()=>{
+  const storeduser = sessionStorage.getItem("username")
+  if (storeduser !== isUser) {
+    setIsUser(storeduser);
+  }
+},[data])
   return (
     <div className="App">
       <BrowserRouter>
       <Routes>
-          {isuser ? (
+          {isUser ? (
             <Route path='/' element={<Browse />} />
           ) : (
             <Route path='/' element={<Signup />} />
@@ -24,6 +27,4 @@ function App() {
     </div>
   );
 }
-
-
 export default App;

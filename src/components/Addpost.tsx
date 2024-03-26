@@ -21,8 +21,8 @@ interface user {
 }
   const post = useRef<HTMLInputElement>(null);
   let userdata = useSelector((state:RootState)=>state.user.user)
-  let username = localStorage.getItem("username")
-  let password = localStorage.getItem("password")
+  let username = sessionStorage.getItem("username")
+  let password = sessionStorage.getItem("password")
   const headers={
     'username':username,
     'password':password
