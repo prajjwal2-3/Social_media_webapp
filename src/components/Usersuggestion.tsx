@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 interface UserSuggestionInfo {
   username: string,
 _id: String,
@@ -7,10 +8,31 @@ information:string,
 post:any[]
 __v:number
 }
+interface prop{
+  
+}
 const Usersuggestion = ({info}) => {
   const [connect,setconnect]=useState("Connect");
   function handleclick(){
-      connect==="Connect"?setconnect("Sent"):setconnect("Connect")
+  
+
+    let username= sessionStorage.getItem("username");
+    let password = sessionStorage.getItem("password");
+    let userid = info?._id
+     const headers={
+      'username':username,
+      'password':password,
+      'userid':userid
+     }
+     connect==="Connect"?sendrequest():alert('Request already sent')
+   
+    function sendrequest(){
+      setconnect("Sent")
+      axios.post('https://social-backend-navy.vercel.app/user/sendrequest',{description:'nothing'},{
+        headers:headers
+      }).then((Response)=>{alert('Friend request sent')})
+    }
+
   }
   return (
     
