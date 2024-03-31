@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route,Routes } from 'react-router-dom'
-import Browse from './Browse.tsx'
+import Browse from './Home.tsx'
 import Friends from './Friends.tsx'
 import News from './News.tsx'
 import PrimarySearchAppBar from './Header1.tsx'
@@ -10,6 +10,7 @@ const Layout = () => {
     <PrimarySearchAppBar/>
   <Routes>
     <Route index element={<Browse/>}></Route>
+    <Route path='/Home' element={<Browse/>}></Route>
     <Route path='/Friends' element={<Friends/>}></Route>
     <Route path='/News' element={<News/>}></Route>
   </Routes>

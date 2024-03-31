@@ -13,10 +13,49 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
-const pages = ['Friends','News'];
+import { useEffect } from 'react';
+import { addsuggestedUser } from '../utils/suggestionslice.ts';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+const pages = ['Home','Friends','News'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
+  const dispatch = useDispatch()
+  interface RootState {
+    user: {
+        user: {
+          username:string,
+          password:string
+        }
+    },
+    suggested:{
+      suggesteduser:any[]
+    }
+}
+interface UserSuggestionInfo {
+  username: string,
+_id: String,
+password: string,
+information:string,
+post:any[]
+__v:number
+}
+  const userdata=useSelector((state:RootState)=>state?.user?.user)
+   const headers={
+    'username':userdata?.username,
+    'password':userdata?.password
+   }
+  useEffect(()=>{
+    axios.get('https://social-backend-navy.vercel.app/user/usersuggestion',{
+      headers:headers
+    }).then(response=>{
+    dispatch(addsuggestedUser(response.data.user))
+    })
+    .catch(error=>{
+      alert(error)
+    })
+  },[])
   const navigate = useNavigate()
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);

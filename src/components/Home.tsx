@@ -8,8 +8,7 @@ import axios from 'axios'
 import Postsection from './Postsection.tsx'
 import Friends from './Friends.tsx'
 import News from './News.tsx'
-const Browse = () => {
-  const dispatch = useDispatch()
+const Home = () => {
   interface RootState {
     user: {
         user: {
@@ -21,29 +20,6 @@ const Browse = () => {
       suggesteduser:any[]
     }
 }
-interface UserSuggestionInfo {
-  username: string,
-_id: String,
-password: string,
-information:string,
-post:any[]
-__v:number
-}
-  const userdata=useSelector((state:RootState)=>state?.user?.user)
-   const headers={
-    'username':userdata?.username,
-    'password':userdata?.password
-   }
-  useEffect(()=>{
-    axios.get('https://social-backend-navy.vercel.app/user/usersuggestion',{
-      headers:headers
-    }).then(response=>{
-    dispatch(addsuggestedUser(response.data.user))
-    })
-    .catch(error=>{
-      alert(error)
-    })
-  },[])
  const suggestion = useSelector((state:RootState)=>state?.suggested?.suggesteduser)
   if(suggestion===null) return <div className="">loading....</div>
   return (
@@ -69,4 +45,4 @@ __v:number
     </div>
   )
 }
-export default Browse
+export default Home

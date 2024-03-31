@@ -1,4 +1,4 @@
-import Browse from "./Browse.tsx";
+import Browse from "./Home.tsx";
 import Signup from "./Signup.tsx";
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import { useState,useEffect } from "react";
