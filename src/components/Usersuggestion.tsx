@@ -30,7 +30,7 @@ const Usersuggestion = ({info}) => {
       setconnect("Sent")
       axios.post('https://social-backend-navy.vercel.app/user/sendrequest',{description:'nothing'},{
         headers:headers
-      }).then((Response)=>{alert('Friend request sent')})
+      }).then((Response)=>{alert(Response.data);console.log(Response)})
     }
 
   }
