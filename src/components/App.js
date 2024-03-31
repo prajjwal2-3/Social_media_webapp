@@ -5,6 +5,7 @@ import { useState,useEffect } from "react";
 import { useSelector } from "react-redux";
 import Friends from "./Friends.tsx";
 import News from "./News.tsx";
+import Layout from "./Layout.tsx";
 
 function App() {
 
@@ -23,14 +24,9 @@ useEffect(()=>{
       <Routes>
       
           {isUser ? (
-            <>
-           
-            <Route path='/' element={<Browse />} />,
             
-            <Route path='/Friends' element={<Friends/>}/>,
-          <Route path='/News' element={<News/>}/>
-         
-          </>
+            <Route path='/*' element={<Layout />} />
+          
           ) : (
             <Route path='/' element={<Signup />} />
           )}
