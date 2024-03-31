@@ -3,6 +3,9 @@ import Signup from "./Signup.tsx";
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import { useState,useEffect } from "react";
 import { useSelector } from "react-redux";
+import Friends from "./Friends.tsx";
+import News from "./News.tsx";
+
 function App() {
 
 const data = useSelector((state)=>state.user.user)
@@ -15,13 +18,25 @@ useEffect(()=>{
 },[data])
   return (
     <div className="App">
+    
       <BrowserRouter>
       <Routes>
+      
           {isUser ? (
-            <Route path='/' element={<Browse />} />
+            <>
+           
+            <Route path='/' element={<Browse />} />,
+            
+            <Route path='/Friends' element={<Friends/>}/>,
+          <Route path='/News' element={<News/>}/>
+         
+          </>
           ) : (
             <Route path='/' element={<Signup />} />
           )}
+       
+       
+          
         </Routes>   
        </BrowserRouter>
     </div>

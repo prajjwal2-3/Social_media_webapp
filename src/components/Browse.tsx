@@ -4,9 +4,11 @@ import Usersuggestion from './Usersuggestion.tsx'
 import { UseSelector, useDispatch, useSelector } from 'react-redux'
 import { UseDispatch } from 'react-redux'
 import { addsuggestedUser } from '../utils/suggestionslice.ts'
-
+import { Route,Routes, BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 import Postsection from './Postsection.tsx'
+import Friends from './Friends.tsx'
+import News from './News.tsx'
 const Browse = () => {
   const dispatch = useDispatch()
   
@@ -54,13 +56,12 @@ __v:number
   return (
     <div className='bg-zinc-900  min-h-screen'>
        <PrimarySearchAppBar/>
-      <div className=" flex flex-row justify-evenly sm:mt-12 mt-8">
+          <div className=" flex flex-row justify-evenly sm:mt-12 mt-8">
         <div className=" bg-gray-800 w-3/12 h-96 overflow-y-scroll overflow-x-hidden hidden sm:block p-4 rounded-2xl">
           <div className="w-full  text-center font-bold text-xl m-2 text-white">You may Know them</div>
           <div className="w-full h-0.5 bg-gray-100"></div>
           <div className="">
             {suggestion.map((e,index)=>( <Usersuggestion info={e}  key={index}/>))}
-           
           </div>
         </div>
         <div className="  sm:w-4/12  w-10/12">
