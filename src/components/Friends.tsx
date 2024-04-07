@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Usersuggestion from "./Usersuggestion.tsx";
 import { Button } from "@mui/material";
+import Friendcard from "./Friendcard.tsx";
 const Friends = () => {
   const [page, setpage] = useState("");
   interface RootState {
@@ -13,12 +14,26 @@ const Friends = () => {
     };
     suggested: {
       suggesteduser: any[];
+      friends:{
+        pending:any[];
+        sent:any[];
+        friends:any[]
+      }
     };
   }
   const suggestion = useSelector(
     (state: RootState) => state?.suggested?.suggesteduser
   );
-  if (suggestion === null) return <div className="">loading....</div>;
+  const pending = useSelector(
+    (state:RootState)=>state?.suggested?.friends?.pending
+  );
+  const sent = useSelector(
+    (state:RootState)=>state?.suggested?.friends?.sent
+  );
+  const friends = useSelector(
+    (state:RootState)=>state?.suggested?.friends?.friends
+  );
+  if (suggestion === null || pending === null || sent === null || friends === null) return <div className="">loading....</div>
   return (
     <div className="h-screen bg-gray-800 flex flex-col">
       <div className="w-full justify-center flex flex-row ">
@@ -74,17 +89,47 @@ const Friends = () => {
           </div>
           <div className="w-full h-0.5 bg-gray-100"></div>
           <div className="">
-            {suggestion.map((e, index) => (
+            {suggestion?.map((e, index) => (
               <Usersuggestion info={e} key={index} />
             ))}
           </div>
         </div>
       ) :page=== "Pending" ? (
-        <div className="bg-blue-900">Pending request</div>
+        <div className="  w-full  overflow-y-scroll overflow-x-hidden  p-4 ">
+        <div className="w-full text-center font-bold text-xl m-2 text-white">
+          Pending Request
+        </div>
+        <div className="w-full h-0.5 bg-gray-100"></div>
+        <div className="">
+          {pending?.map((e, index) => (
+            <Friendcard info={e} key={index} />
+          ))}
+        </div>
+      </div>
       ) :page=== "Sent" ? (
-        <div className="bg-blue-700">Sent request</div>
+        <div className="  w-full  overflow-y-scroll overflow-x-hidden  p-4 ">
+        <div className="w-full text-center font-bold text-xl m-2 text-white">
+          Sent Request
+        </div>
+        <div className="w-full h-0.5 bg-gray-100"></div>
+        <div className="">
+          {sent?.map((e, index) => (
+            <Friendcard info={e} key={index} />
+          ))}
+        </div>
+      </div>
       ) : (
-        <div className="bg-blue-600">Friends</div>
+        <div className="  w-full  overflow-y-scroll overflow-x-hidden  p-4 ">
+        <div className="w-full text-center font-bold text-xl m-2 text-white">
+          Friends
+        </div>
+        <div className="w-full h-0.5 bg-gray-100"></div>
+        <div className="">
+          {friends?.map((e, index) => (
+            <Friendcard info={e} key={index} />
+          ))}
+        </div>
+      </div>
       )}
     </div>
   );

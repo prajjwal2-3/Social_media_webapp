@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Button } from "@mui/material";
 interface UserSuggestionInfo {
   username: string,
 _id: String,
@@ -44,8 +45,14 @@ const Usersuggestion = ({info}) => {
     <div className="text-white text-xs">{info?.information}</div>
     </div>
     </div>
-    <div className="h-8 w-16 bg-green-500 rounded-lg text-center p-0.5 cursor-pointer hover:bg-green-600 ">
-      <button onClick={handleclick} className='' >{connect}</button>
+    <div className="">
+    <Button
+            variant="contained"
+            size="small"
+            onClick={handleclick}
+          >
+            {connect}
+          </Button>
     </div>
    
     </div>

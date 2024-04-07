@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { addsuggestedUser } from '../utils/suggestionslice.ts';
+import { addsuggestedUser,addfriends } from '../utils/suggestionslice.ts';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 const pages = ['Home','Friends','News'];
@@ -43,10 +43,10 @@ __v:number
 }
   const userdata=useSelector((state:RootState)=>state?.user?.user)
    const headers={
-    'username':userdata?.username,
-    'password':userdata?.password
+    'username':sessionStorage.getItem('username'),
+    'password':sessionStorage.getItem('password')
    }
-  useEffect(()=>{
+   function api(headers: { username: string|null; password: string|null; }){
     axios.get('https://social-backend-navy.vercel.app/user/usersuggestion',{
       headers:headers
     }).then(response=>{
@@ -55,6 +55,17 @@ __v:number
     .catch(error=>{
       alert(error)
     })
+    axios.get('https://social-backend-navy.vercel.app/user/friendrequest',{
+      headers:headers
+    }).then(response=>{
+    dispatch(addfriends(response.data))
+    })
+    .catch(error=>{
+      alert(error)
+    })
+   }
+  useEffect(()=>{
+   api(headers)
   },[])
   const navigate = useNavigate()
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);

@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useRef } from 'react'
 import { useSelector } from 'react-redux';
+import { Button } from '@mui/material';
 const Addpost = () => {
   interface RootState {
     user: {
@@ -44,7 +45,13 @@ interface user {
         <input type="text" ref={post} id='myi' placeholder='Share something with the world' className='h-12 sm:w-96  rounded-lg p-2' />
       </div>
       <div className="" >
-        <button onClick={addpost} className='bg-blue-500 p-2 m-1 rounded-md'>Post</button>
+      <Button
+            variant="contained"
+            size="small"
+            onClick={addpost}
+          >
+            Post
+          </Button>
       </div>
     </div>
   ) 

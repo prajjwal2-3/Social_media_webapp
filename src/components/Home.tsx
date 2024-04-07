@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import PrimarySearchAppBar from './Header1.tsx'
+import React from 'react'
 import Usersuggestion from './Usersuggestion.tsx'
-import {useDispatch, useSelector } from 'react-redux'
-import { addsuggestedUser } from '../utils/suggestionslice.ts'
-import { Route,Routes } from 'react-router-dom'
-import axios from 'axios'
+import { useSelector } from 'react-redux'
 import Postsection from './Postsection.tsx'
-import Friends from './Friends.tsx'
-import News from './News.tsx'
 const Home = () => {
   interface RootState {
     user: {
