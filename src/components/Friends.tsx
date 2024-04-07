@@ -118,7 +118,7 @@ const Friends = () => {
           ))}
         </div>
       </div>
-      ) : (
+      ) : page=== "friends" ?(
         <div className="  w-full  overflow-y-scroll overflow-x-hidden  p-4 ">
         <div className="w-full text-center font-bold text-xl m-2 text-white">
           Friends
@@ -130,6 +130,18 @@ const Friends = () => {
           ))}
         </div>
       </div>
+      ):(
+        <div className="  w-full  overflow-y-scroll overflow-x-hidden  p-4 ">
+          <div className="w-full text-center font-bold text-xl m-2 text-white">
+            You may Know them
+          </div>
+          <div className="w-full h-0.5 bg-gray-100"></div>
+          <div className="">
+            {suggestion?.map((e, index) => (
+              <Usersuggestion info={e} key={index} />
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );
