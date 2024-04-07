@@ -31,6 +31,28 @@ const Friendcard = ({info}) => {
         fetchFriendData();
       }, []);
 console.log(friend)
+
+function handleclick(){
+  
+
+    let username= sessionStorage.getItem("username");
+    let password = sessionStorage.getItem("password");
+    let userid = info
+     const headers={
+      'username':username,
+      'password':password,
+      'userid':userid
+     }
+    
+   
+    function sendrequest(){
+     
+      axios.post('https://social-backend-navy.vercel.app/user/acceptrequest',{description:'nothing'},{
+        headers:headers
+      }).then((Response)=>{alert(Response.data);console.log(Response)})
+    }
+sendrequest()
+  }
   return (
     
     <div className='rounded-lg bg-gray-600 mx-2 my-3 p-2 shadow-md flex justify-between items-center'>
@@ -45,10 +67,10 @@ console.log(friend)
     <Button
             variant="contained"
             size="small"
-            // onClick={handleclick}
+            onClick={handleclick}
           >
-            {/* {connect} */}
-            accept
+        
+            Accept
           </Button>
     </div>
    
